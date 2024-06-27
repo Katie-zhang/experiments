@@ -3,6 +3,8 @@ import os
 import time
 from collections import OrderedDict
 from copy import deepcopy
+from models import vit
+from utils import create_dataloaders
 
 import medmnist
 import numpy as np
@@ -19,19 +21,13 @@ from torchvision.models import resnet18, resnet50
 from tqdm import trange
 
 
-def main(data_flag, output_root, num_epochs, gpu_ids, batch_size, download, model_flag, resize, as_rgb, model_path, run):
+def main(data_flag_list, output_root, num_epochs, gpu_ids, batch_size, download, model_flag, resize, as_rgb, model_path, run):
 
     lr = 0.001
     gamma=0.1
     milestones = [0.5 * num_epochs, 0.75 * num_epochs]
 
-    info = INFO[data_flag]
-    task = info['task']
-    n_channels = 3 if as_rgb else info['n_channels']
-    n_classes = len(info['label'])
-
-    DataClass = getattr(medmnist, info['python_class'])
-
+    
     str_ids = gpu_ids.split(',')
     gpu_ids = []
     for str_id in str_ids:
@@ -59,44 +55,28 @@ def main(data_flag, output_root, num_epochs, gpu_ids, batch_size, download, mode
             [transforms.ToTensor(),
             transforms.Normalize(mean=[.5], std=[.5])])
      
-    train_dataset = DataClass(split='train', transform=data_transform, download=download, as_rgb=as_rgb)
-    val_dataset = DataClass(split='val', transform=data_transform, download=download, as_rgb=as_rgb)
-    test_dataset = DataClass(split='test', transform=data_transform, download=download, as_rgb=as_rgb)
-
-    
-    train_loader = data.DataLoader(dataset=train_dataset,
-                                batch_size=batch_size,
-                                shuffle=True)
-    train_loader_at_eval = data.DataLoader(dataset=train_dataset,
-                                batch_size=batch_size,
-                                shuffle=False)
-    val_loader = data.DataLoader(dataset=val_dataset,
-                                batch_size=batch_size,
-                                shuffle=False)
-    test_loader = data.DataLoader(dataset=test_dataset,
-                                batch_size=batch_size,
-                                shuffle=False)
+    train_datasets_list, val_datasets_list, test_datasets_list,train_dataloader_list, val_dataloader_list, test_dataloader_list = create_dataloaders(data_flag_list, data_transform, batch_size)
 
     print('==> Building and training model...')
     
     
     if model_flag == 'resnet18':
-        model =  resnet18(pretrained=False, num_classes=n_classes) if resize else ResNet18(in_channels=n_channels, num_classes=n_classes)
+        model =  resnet18(pretrained=False, num_classes=3) if resize else ResNet18(in_channels=3, num_classes=n_classes)
     elif model_flag == 'resnet50':
-        model =  resnet50(pretrained=False, num_classes=n_classes) if resize else ResNet50(in_channels=n_channels, num_classes=n_classes)
+        model =  resnet50(pretrained=False, num_classes=3) if resize else ResNet50(in_channels=3, num_classes=n_classes)
     else:
         raise NotImplementedError
 
     model = model.to(device)
 
-    train_evaluator = medmnist.Evaluator(data_flag, 'train')
-    val_evaluator = medmnist.Evaluator(data_flag, 'val')
-    test_evaluator = medmnist.Evaluator(data_flag, 'test')
+    # train_evaluator = medmnist.Evaluator(data_flag, 'train')
+    # val_evaluator = medmnist.Evaluator(data_flag, 'val')
+    # test_evaluator = medmnist.Evaluator(data_flag, 'test')
 
-    if task == "multi-label, binary-class":
-        criterion = nn.BCEWithLogitsLoss()
-    else:
-        criterion = nn.CrossEntropyLoss()
+    # if task == "multi-label, binary-class":
+    #     criterion = nn.BCEWithLogitsLoss()
+    # else:
+    #     criterion = nn.CrossEntropyLoss()
 
     if model_path is not None:
         model.load_state_dict(torch.load(model_path, map_location=device)['net'], strict=True)
@@ -248,6 +228,9 @@ if __name__ == '__main__':
     parser.add_argument('--data_flag',
                         default='pathmnist',
                         type=str)
+    parser.add_argument('--data_flags_list',
+                        default=['pathmnist'],
+                        type=list)
     parser.add_argument('--output_root',
                         default='./output',
                         help='output root, where to save models and results',

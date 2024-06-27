@@ -1,0 +1,80 @@
+{
+    "os": "Linux-6.1.85+-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-06-08T09:50:42.767818",
+    "startedAt": "2024-06-08T09:50:33.958986",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "vit.ipynb",
+    "codePathLocal": "vit.ipynb",
+    "colab": "https://colab.research.google.com/notebook#fileId=19ECgDunLC0J_pm6Uo1XexXayI9EMBl8H",
+    "git": {
+        "remote": "https://github.com/MedMNIST/experiments.git",
+        "commit": "8b0f553f95ea6b5f5517e49c539952cb21c79d89"
+    },
+    "email": null,
+    "root": "/content/drive/MyDrive/experiments",
+    "host": "e6c4658a60d9",
+    "username": "root",
+    "executable": "/usr/bin/python3",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2249.998,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2249.998,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 225.83275985717773,
+            "used": 30.515453338623047
+        }
+    },
+    "memory": {
+        "total": 50.99364471435547
+    }
+}

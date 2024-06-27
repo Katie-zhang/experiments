@@ -1,0 +1,108 @@
+{
+    "os": "Linux-6.1.85+-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-06-03T16:28:52.560473",
+    "startedAt": "2024-06-03T16:28:35.433919",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "vit.ipynb",
+    "codePathLocal": "vit.ipynb",
+    "colab": "https://colab.research.google.com/notebook#fileId=19ECgDunLC0J_pm6Uo1XexXayI9EMBl8H",
+    "git": {
+        "remote": "https://github.com/MedMNIST/experiments.git",
+        "commit": "8b0f553f95ea6b5f5517e49c539952cb21c79d89"
+    },
+    "email": null,
+    "root": "/content/drive/MyDrive/experiments",
+    "host": "3be4a7495a14",
+    "username": "root",
+    "executable": "/usr/bin/python3",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2200.2419999999997,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.242,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 201.22513961791992,
+            "used": 30.583526611328125
+        }
+    },
+    "gpu": "NVIDIA L4",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA L4",
+            "memory_total": 24152899584
+        }
+    ],
+    "memory": {
+        "total": 52.9614372253418
+    }
+}

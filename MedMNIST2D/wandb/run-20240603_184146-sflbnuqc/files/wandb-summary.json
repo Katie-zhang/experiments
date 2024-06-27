@@ -1,0 +1,1 @@
+{"Task 0 Epoch Loss": 1.8956119863184056, "Task 0 Epoch Accuracy": 0.27394438722966014, "Task 0 Epoch F1 Score": 0.20498816064865952, "_timestamp": 1717440713.4972925, "_runtime": 607.1152184009552, "_step": 1, "Global Epoch Loss": 1.8956119863184056, "Global Epoch Accuracy": 0.27394438722966014, "Global Epoch F1 Score": 0.20498816064865952, "_wandb": {"runtime": 620}}
